@@ -1,0 +1,24 @@
+name: Release
+
+# Publishes to npm when a GitHub release is published.
+# Uses npm trusted publishing (OIDC): no long-lived token stored in the repo.
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          registry-url: https://registry.npmjs.org
+      - run: npm ci
+      - run: npm run check
+      - run: npm publish --provenance --access public

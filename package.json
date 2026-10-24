@@ -1,0 +1,71 @@
+{
+  "name": "@igarasy/br-payments",
+  "version": "0.1.0",
+  "description": "Zero-dependency TypeScript toolkit for Brazilian payments: Pix BR Code (generate, parse, validate), Pix keys, boleto barcodes and digitable lines, CPF and CNPJ (including alphanumeric CNPJ).",
+  "keywords": [
+    "pix",
+    "brcode",
+    "br-code",
+    "qrcode",
+    "boleto",
+    "linha-digitavel",
+    "codigo-de-barras",
+    "febraban",
+    "cpf",
+    "cnpj",
+    "cnpj-alfanumerico",
+    "brazil",
+    "payments"
+  ],
+  "license": "MIT",
+  "author": "Lucas Igarashi <igarasshi.lucass@gmail.com> (https://igarasy.dev)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/igarasy/br-payments.git"
+  },
+  "homepage": "https://github.com/igarasy/br-payments#readme",
+  "bugs": "https://github.com/igarasy/br-payments/issues",
+  "type": "module",
+  "sideEffects": false,
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "tsup",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit",
+    "check": "npm run typecheck && npm test && npm run build",
+    "prepublishOnly": "npm run check"
+  },
+  "devDependencies": {
+    "tsup": "^9.0.0",
+    "typescript": "~6.0.3",
+    "vite": "^8.3.5",
+    "vitest": "^5.0.5"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  }
+}
